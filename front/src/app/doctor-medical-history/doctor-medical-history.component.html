@@ -1,0 +1,83 @@
+<html>
+    <body>
+
+   
+
+<nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=""><img src='../../assets/download.png' width="80" height="60"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/doctorProfile" style="font-size: large;">Profile</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/doctorAppointments"  style="font-size: large;">Appointments</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/doctorOther" style="font-size: large;">Other</a>
+          </li>
+          
+          
+        </ul>
+        <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+            <li class="nav-item lepse" aria-current="page">
+                <a class='nav-link dete' style="font-size: large;" (click)="logout()">
+                    <img src="../../assets/login.png" height="30" width="30">
+                    Logout
+                </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="toggle_modal" style="display:none;">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Logout in {{get_time_left()}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid parent" style="margin:0;padding: 0;margin-top: 1%;margin-bottom: 1%;">
+    <div class="row text-center" style="margin:0;padding: 0;">
+        <div class="col-6 parent1" *ngFor="let app of shownApps" style="margin:0;padding:auto;margin-bottom: 1%;">
+          <div class="card" style="width: 80%;" >
+            <div class="card-header">
+              {{app.date.slice(0,10)}} {{app.hours}}:{{app.minutes}}  
+            </div>
+            <div class="card-body">
+                <p class="card-text">Doctor: {{get_doctor_name(app.idDoctor)}} {{get_doctor_lastname(app.idDoctor)}}</p>
+                <p class="card-text">Specialization: {{get_doctor_spec(app.idDoctor)}}</p>
+                <p class="card-text">Reason: {{app.reason}}</p>
+                <p class="card-text">Diagnosis: {{app.dijagnoza}}</p>
+                <p class="card-text">Therapy: {{app.therapy}}</p>
+                <p class="card-text">Next appointment: {{app.nextAppDate}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+  
+</body>
+</html>

@@ -1,0 +1,36 @@
+.button{
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    
+    border:0;
+}
+
+
+.parent{
+    margin: 0;
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
+    min-width: 100%;
+}
+
+a{
+    text-decoration: none;
+    
+}
+
+
+html body{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+

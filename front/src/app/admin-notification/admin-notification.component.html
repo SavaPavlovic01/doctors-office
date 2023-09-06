@@ -1,0 +1,83 @@
+<html>
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src='../../assets/download.png' width="80" height="60"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminAllUsers">All users</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminRegisterRequest">Registration requests</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminAppRequests">Appointment requests</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminNotification">Send Notification</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminAllTypes">Appointment types</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/registerDoctor">Add doctor</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminChangePassword">Change password</a>
+                  </li>
+                  
+                </ul>
+                <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+                    <li class="nav-item lepse" aria-current="page">
+                        <a class='nav-link dete' routerLink="login" style="font-size: large;" (click)="logout()">
+                            <img src="../../assets/login.png" height="30" width="30"(click)="logout()">
+                            Logout
+                        </a>
+                    </li>
+                    
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+
+        <div class="container parent vh-100 w-100" >
+            <div class="row" style="width: 40%;">
+                
+                <div class="col-12">Notification text</div>
+                <div class="col-12"><input type="text" class="form-control" [(ngModel)]="text"></div> 
+                <span style="color: rgb(37, 185, 37);">{{msgSucces}}</span>
+                <div class="col-12"><button class="btn btn-primary" style="width:100%;margin-top: 20px;" (click)="send()" >Save</button></div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="toggle_modal" style="display:none;">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Logout in {{get_time_left()}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </body>
+</html>

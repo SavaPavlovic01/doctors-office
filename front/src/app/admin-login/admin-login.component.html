@@ -1,0 +1,17 @@
+<html>
+<body>
+<div class="container parent vh-100 w-100" >
+    <div class="row text-center">
+        
+        <div class="col12">Username</div>
+        <div class="col12"><input type="text" class="form-control" [(ngModel)]="username"></div>
+        <div class="col12">Password</div>
+        <div class="col12"><input type="password" class="form-control" [(ngModel)]="password"></div>
+        <div class="col12"><span style="width: 50%;">{{msg}}</span></div>
+        <div class="col12"><button type="button" class="btn btn-primary button" (click)="login()">Login</button> </div>
+        <div class="col12"><hr style="width: 50%;margin: auto;margin-bottom: 2.5%;"> </div>
+        
+    </div>
+</div>
+</body>
+</html>

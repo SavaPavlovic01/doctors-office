@@ -1,0 +1,118 @@
+<html>
+    <body>
+
+   
+
+<nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=""><img src='../../assets/download.png' width="80" height="60"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/userProfile" style="font-size: large;">Profile</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page"  routerLink="/patitentAllDoctors"  style="font-size: large;">Doctors</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/patientAppointments" style="font-size: large;">Appointments</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/patientNotificatins" style="font-size: large;">Notifications</a>
+          </li>
+          
+        </ul>
+        <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+            <li class="nav-item lepse" aria-current="page">
+                <a class='nav-link dete' style="font-size: large;" (click)="logout()">
+                    <img src="../../assets/login.png" height="30" width="30">
+                    Logout
+                </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+  
+
+    <div style="text-align: center;">
+      <input type="date" [(ngModel)]="day" (change)="updateAll()" style="margin-left: 15px;margin-bottom: 15px;">
+      <select style="text-align: center;"  aria-label="Default select example" [(ngModel)]="sel" style="width: 25%;margin-left: 15px;">
+        <option *ngFor="let typ of curDoctor.types" [ngValue]="typ" >{{typ.name}} (Duration:{{typ.duration}} Price:{{typ.price}})</option>
+      </select><br>
+      <button (click)="submit()" class="btn btn-primary" style="margin-bottom: 15px;margin-right: 15px;">Add appointment</button>
+      <button (click)="clear()" class="btn btn-primary" style="margin-bottom: 15px;margin-right: 15px;">Remove appointment</button><br>
+      
+    </div>
+
+  
+
+
+  
+
+
+<div style="overflow: scroll;width: 100%;height: 450px;" >
+
+
+<table class="table table-hover table-striped-columns disable-select" id="table">
+    <thead>
+        <tr>
+            <th class="col-md-1">time</th>
+            <th class="col-md-1">{{calcDate(0)}}</th>
+            <th class="col-md-1">{{calcDate(1)}}</th>
+            <th class="col-md-1">{{calcDate(2)}}</th>
+            <th class="col-md-1">{{calcDate(3)}}</th>
+            <th class="col-md-1">{{calcDate(4)}}</th>
+            <th class="col-md-1">{{calcDate(5)}}</th>
+            <th class="col-md-1">{{calcDate(6)}}</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    
+
+    <tr *ngFor="let cur of curTable">
+        <th scope="row">{{addZero(cur.hours)}}:{{addZero(cur.minutes)}}</th>
+        <td [ngStyle]="{'background-color': (cur.monday==true) ? '#73c7af' : '#ffffff'}">{{cur.mondayText}}</td>
+        <td [ngStyle]="{'background-color': (cur.tuesday==true) ? '#73c7af' : '#ffffff'}">{{cur.tuesdayText}}</td>
+        <td [ngStyle]="{'background-color': (cur.wednesday==true) ? '#73c7af' : '#ffffff'}">{{cur.wednesdayText}}</td>
+        <td [ngStyle]="{'background-color': (cur.thursday==true) ? '#73c7af' : '#ffffff'}">{{cur.thursdayText}}</td>
+        <td [ngStyle]="{'background-color': (cur.friday==true) ? '#73c7af' : '#ffffff'}">{{cur.fridayText}}</td>
+        <td [ngStyle]="{'background-color': (cur.saturday==true) ? '#73c7af' : '#ffffff'}">{{cur.saturdayText}}</td>
+        <td [ngStyle]="{'background-color': (cur.sunday==true) ? '#73c7af' : '#ffffff'}">{{cur.sundayText}}</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="toggle_modal" style="display:none;">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Logout in {{get_time_left()}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<html>
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src='../../assets/download.png' width="80" height="60"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminAllUsers">All users</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminRegisterRequest">Registration requests</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminAppRequests">Appointment requests</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminNotification">Send Notification</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminAllTypes">Appointment types</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/registerDoctor">Add doctor</a>
+                  </li>
+                  <li class="nav-item lepse">
+                    <a class="nav-link active dete" aria-current="page" href="/adminChangePassword">Change password</a>
+                  </li>
+                  
+                </ul>
+                <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+                    <li class="nav-item lepse" aria-current="page">
+                        <a class='nav-link dete' routerLink="login" style="font-size: large;" (click)="logout()">
+                            <img src="../../assets/login.png" height="30" width="30" (click)="logout()">
+                            Logout
+                        </a>
+                    </li>
+                    
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+<div class="container parent vh-100 w-100"  style="padding-top:200px ;">
+    <div class="row text-center">
+        <div class="col12">{{msgInfo}}</div>
+        <div class="col12">Username</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="username"></div>
+        <div class="col12">Password</div>
+        <div class="col12"><input type="password" style="width: 50%;" [(ngModel)]="password"></div>
+
+        <div class="col12">Name</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="name"></div>
+
+        <div class="col12">Last name</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="lastname"></div>
+
+        <div class="col12">Address</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="address"></div>
+    
+        <div class="col12">Phone number</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="phone"></div>
+        <div class="col12">E-mail</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="mail"></div>
+        <!--<div class="col12">
+            <span [ngClass]="{'option':user===false,'selected':user===true}" (click)="clickUser()">User</span>
+            <span [ngClass]="{'option':firma===false,'selected':firma===true}" (click)="clickFirm()">Firma</span>
+        </div>-->
+        <div class="col12">Licence</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="licence"></div>
+
+        <div class="col12">Specialization</div>
+        <div class="col-12"><select [(ngModel)]="spec"  style="width: 50%;">
+            <option *ngFor="let curSpec of allSpec" value={{curSpec}}>{{curSpec}}</option>
+        </select></div>
+
+        <div class="col12">Branch</div>
+        <div class="col12"><input type="text" style="width: 50%;" [(ngModel)]="branch"></div>
+
+        <div class="col12"><input type="file" style="display:none" [(ngModel)]="image" (change)="uploadFile($event)" id="file-upload"></div>
+        <div class="col12"><label for="file-upload" class="btn btn-primary w-50 m-3">Upload profile picture</label> </div>
+        <div class="col12" *ngIf="realFile && !errorPic"><div style="margin-bottom:3%;">Selected picture: {{realFile.name}}</div> </div>
+        <div class="col12" *ngIf="errorPic"><div style="margin-bottom:3%;">{{msgPic}}</div> </div>
+        
+       
+        
+       
+        
+        
+        <div class="col12"><button type="button" class="btn btn-primary button" (click)="register()">Register</button> </div>
+       
+        
+    </div>
+</div>
+
+
+    </body>
+</html>

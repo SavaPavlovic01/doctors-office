@@ -1,0 +1,124 @@
+<html>
+    <body>
+
+        <style>
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+            }
+         </style>
+
+<nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=""><img src='../../assets/download.png' width="80" height="60"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/userProfile" style="font-size: large;">Profile</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/patitentAllDoctors"  style="font-size: large;">Doctors</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/patientAppointments" style="font-size: large;">Appointments</a>
+          </li>
+          <li class="nav-item lepse">
+            <a class="nav-link active dete" aria-current="page" routerLink="/patientNotificatins" style="font-size: large;">Notifications</a>
+          </li>
+          
+        </ul>
+        <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+            <li class="nav-item lepse" aria-current="page">
+                <a class='nav-link dete' style="font-size: large;" (click)="logout()">
+                    <img src="../../assets/login.png" height="30" width="30">
+                    Logout
+                </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+
+
+<div class="parent" >
+    <div class="row" style="width: 40%;">
+        <div class="col-12">Appointment type</div>
+        <div class="col-12" >
+          <select class="form-control"  aria-label="Default select example" [(ngModel)]="sel">
+            <option *ngFor="let typ of curDoctor.types" [ngValue]="typ" >{{typ.name}} (Duration:{{typ.duration}} Price:{{typ.price}})</option>
+          </select><br>
+        </div>
+        <div class="col-12">Date</div>
+        <div class="col-12"><input type="date" class="form-control" [(ngModel)]="date"></div>
+        <div class="col-12">Time</div>
+        <div class="col-12">
+            <img src="../../assets/up.png" width="50" height="50" (click)="hours_up()"> <img src="../../assets/up.png" width="50" height="50" (click)="minutes_up()">
+        </div>
+        <div class="col-12" >
+            <span style="font-size: 35px;" *ngIf="!get_edit()" (click)="hours_click()">{{get_hours()}}:{{get_minutes()}}</span>
+            <span style="font-size: 35px;" *ngIf="get_edit()"><input type="number" [(ngModel)]="hours" id="hrs" style="border: none;width: 40px;">:
+                <input type="number" [(ngModel)]="minutes" id="min" style="border: none;width: 40px;">
+            </span>
+        </div>
+        
+        <div class="col-12">
+            <img src="../../assets/down.png" width="50" height="50" (click)="hours_down()" > <img src="../../assets/down.png" width="50" height="50" (click)="minutes_down()">
+        </div>
+        
+        <div *ngIf="edit"><button (click)="toggle()" class="btn btn-primary">Save</button></div>
+        
+        <span style="color: rgb(181, 32, 32);">{{msg}}</span>
+        <div class="col-12"><button class="btn btn-primary" style="width: 100%;" (click)="submit()" >Finish editing</button></div>
+    </div>
+</div>
+
+
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="toggle_modal" style="display:none;">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Logout in {{get_time_left()}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

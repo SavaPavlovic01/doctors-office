@@ -1,0 +1,51 @@
+.lepse{
+    border-radius: 20%;
+}
+
+.lepse:hover{
+    background-color: rgb(72, 72, 196);
+    color:white;
+    transition: 0.5s;
+}
+
+.lepse:hover > .dete{
+    color:white
+}
+
+.parent{
+    margin: 0;
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
+    min-width: 100%;
+}
+
+.parent1{
+    margin: 0;
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
+    
+}
+
+body{
+    padding-top: 100px;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.link:hover{
+    color: rgb(39, 39, 169);
+    cursor: pointer;
+    transition: 0.5;
+}
+
+.disable-select {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
